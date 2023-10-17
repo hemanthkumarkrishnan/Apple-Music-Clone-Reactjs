@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom'
    return (
       <Container>
          <div className='footer_container'>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Send Free Trial to Friends {'>'}</Link></div>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Browse by Genre   {'>'}</Link></div>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Decades   {'>'}</Link></div>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Moods and Activities   {'>'}</Link></div>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>WorldWide   {'>'}</Link></div>
-          <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Charts   {'>'}</Link></div>
-           <div className='link_container'>  <Link className='links' to={'/Home/Subscription'}>Music Videos   {'>'}</Link></div>
-           <div className='link_container'> <Link className='links' to={'/Home/Subscription'}>Spatial Audio   {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>Send Free Trial to Friends {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>Browse by Genre   {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>Decades   {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>Moods and Activities   {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>WorldWide   {'>'}</Link></div>
+          <div className='link_container'>  <Link className='links' to={'/Subscription'}>Charts   {'>'}</Link></div>
+           <div className='link_container'>  <Link className='links' to={'/Subscription'}>Music Videos   {'>'}</Link></div>
+           <div className='link_container'> <Link className='links' to={'/Subscription'}>Spatial Audio   {'>'}</Link></div>
 
          </div>
       </Container>

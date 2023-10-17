@@ -31,9 +31,9 @@ function Navbar() {
       audioEle.current.pause();
     }
   },[isPlaying])
-  console.log(currentSong);
+ 
   console.log(currentSong ?.artist?.[0].name);
-  // console.log(currentSong?.audio_url);
+ 
 
 const skipBack=() =>{
  
@@ -73,8 +73,6 @@ const skipNext=() =>{
 
 
 const handleVolumeChange = (event, newValue) => {
-  console.log(event)
-  console.log(newValue)
   setVolume(newValue);
 };
 

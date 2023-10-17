@@ -12,31 +12,30 @@ import { Link } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuIems from './MenuIems';
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuIems from "./MenuIems";
 
 function Sidebar() {
-  const [{user, searchItems }, dispatch] = useDataLayerValue();
+  const [{ user, searchItems }, dispatch] = useDataLayerValue();
   const [changeValue, setChangeValue] = useState("");
-  const [menu,setMenu]=useState(false);
+  const [menu, setMenu] = useState(false);
 
   const navigate = useNavigate();
   const handleChange = () => {
     dispatch({
-      type: "SET_SEARCH",   
+      type: "SET_SEARCH",
       search: changeValue,
-    
     });
     // console.log(changeValue)
-    setChangeValue('');
-    navigate("/home/searchit")
+    setChangeValue("");
+    navigate("searchit");
   };
   // console.log("search "{ replace: true +searchItems);
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     navigate("/login", { replace: true });
-  }
+  };
 
   return (
     <Container>
@@ -60,12 +59,10 @@ function Sidebar() {
             value={changeValue}
             onChange={(e) => setChangeValue(e.target.value)}
           />
-           
-            
-            <button className="search_button" onClick={handleChange}>
-              search
-            </button>
-          
+
+          <button className="search_button" onClick={handleChange}>
+            search
+          </button>
         </div>
         <div className="options">
           <HomeIcon className="sidebarOption__icon" />
@@ -80,9 +77,9 @@ function Sidebar() {
           </Link>
         </div>
         <div className="options">
-           <LogoutIcon className="sidebarOption__icon" />
-          <div className="link-style" to="/login" onClick={handleLogout}>
-             {user} :Logout
+          <LogoutIcon className="sidebarOption__icon" />
+          <div className="link-style" to="login" onClick={handleLogout}>
+            {user} :Logout
           </div>
         </div>
         <div className="options">
@@ -93,13 +90,12 @@ function Sidebar() {
         </div>
       </div>
 
-      <br  className=" side"/>
+      <br className=" side" />
       <strong className="sidebar__title side">PLAYLISTS</strong>
-      <hr  className="side"/>
+      <hr className="side" />
 
       <div className="sidebarOption side">
         <div className="options__playlist">
-          
           <Link className="link_playlist" to="playlist/romantic">
             Romantic
           </Link>
@@ -122,12 +118,9 @@ function Sidebar() {
       </div>
 
       <div className="menu">
-      <MenuIcon className="menu_icon" onClick={() =>setMenu(!menu)}/>
-    {
-      menu && <MenuIems />
-    }
-      
-     </div>
+        <MenuIcon className="menu_icon" onClick={() => setMenu(!menu)} />
+        {menu && <MenuIems />}
+      </div>
     </Container>
   );
 }
@@ -224,36 +217,38 @@ const Container = styled.div`
     font-weight: bold;
     cursor: pointer;
   }
-  .menu{
+  .menu {
     display: none;
   }
 
   @media (max-width: 700px) {
-
-    .side{
+    .side {
       display: none;
     }
-    .menu{
-    display:contents;
-  }
+    .menu {
+      display: contents;
+    }
     svg {
-    margin-left:0;
-    padding:0px;
-    height: 70px;
-    width: 83px;
-  }
-  .menu_icon{
-    height:40px;
-    width: 50px;
-     :hover{
-      color: rgba(0, 0, 0, 0.48);
-     }
-  }
-
-
-
-
+      margin-left: 0;
+      padding: 0px;
+      height: 70px;
+      width: 83px;
+    }
+    .menu_icon {
+      height: 40px;
+      width: 50px;
+      :hover {
+        color: rgba(0, 0, 0, 0.48);
+      }
+    }
   }
 
-
+  @media (max-width: 400px) {
+    svg {
+      margin-left: 0;
+      padding: 0px;
+      height: 50px;
+      width: 50px;
+    }
+  }
 `;

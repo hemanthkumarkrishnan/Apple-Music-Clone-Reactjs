@@ -10,7 +10,7 @@ const navigate=useNavigate();
   return (
     <Container>
         <BackgroundImage />
-        <button onClick={handleClick}>Connect Apple Music</button>
+        <button onClick={handleClick}> Apple Music</button>
     </Container>
   )
 }
@@ -46,6 +46,9 @@ transition:all cubic-bezier(0.55, 0.055, 0.675, 0.19) 300ms;
     background-color:#feffdf;
     font-size:.9rem;
  }
+
+
+
 
 `
 

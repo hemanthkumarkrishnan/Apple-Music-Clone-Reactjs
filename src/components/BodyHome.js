@@ -16,7 +16,8 @@ function BodyHome() {
   const [newRelease, setNewRelease] = useState(null);
   const [toptrand, setTopTrand] = useState(null);
   const [ListOfAlbum, setListOfAlbum] = useState(null);
-
+  const [artists, setArtists] = useState(null);
+  console.log(artists);
   const getListOfMusic = async () => {
     const data = await fetch(
       `https://academics.newtonschool.co/api/v1/music/song?&limit=15`,
@@ -61,6 +62,12 @@ function BodyHome() {
 
     setTopTrand(romanticSong);
 
+    setArtists((prevElements) =>
+      ListOfMusic?.filter(
+        (element) => element?.artist?.[0].name !== "Ashish Vidyarthi"
+      )
+    );
+
     dispatch({
       type: "SET_SONGS",
       songs: ListOfMusic,
@@ -93,7 +100,7 @@ function BodyHome() {
             ListOfAlbum.map((album) => (
               <Link
                 className="artist_link"
-                to={"albumpage/" + album._id}
+                to={"/albumpage/" + album._id}
                 key={album._id}
               >
                 {" "}
@@ -105,10 +112,10 @@ function BodyHome() {
       <div className="Artists">
         <h2>Artists</h2>
         <div className="songs_display">
-          {ListOfMusic?.map((song) => (
+          {artists?.map((song) => (
             <Link
               className="artist_link"
-              to={"artistdetails/" + song.artist[0]._id}
+              to={"/artistdetails/" + song.artist[0]._id}
               key={song._id}
             >
               <ArtistName artist={song.artist[0]} />

@@ -30,9 +30,10 @@ function Sidebar() {
   };
   // console.log("search "+searchItems);
 
-  function logout() {
-    navigate("/", { replace: true });
-  }
+  const handleLogout = () => {
+    localStorage.removeItem("jwtToken");
+    navigate("/login", { replace: true });
+  };
   return (
     <Container>
       <div className="sidebarOption">
@@ -51,25 +52,25 @@ function Sidebar() {
         </div>
         <div className="options">
           <HomeIcon className="sidebarOption__icon" />
-          <Link className="link-style" to={"/Home"}>
-            Home
+          <Link className="link-style" to="/home">
+            home
           </Link>
         </div>
         <div className="options">
           <FavoriteIcon className="sidebarOption__icon" />
-          <Link className="link-style" to={"/Home/Addfav"}>
-            Fav
+          <Link className="link-style" to="/add-fav">
+            fav
           </Link>
         </div>
         <div className="options">
           <LogoutIcon className="sidebarOption__icon" />
-          <Link className="link-style" to={"/"}>
-            Logout
+          <Link className="link-style" to="/login" onClick={handleLogout}>
+            logout
           </Link>
         </div>
         <div className="options">
           <AddShoppingCartIcon className="sidebarOption__icon" />
-          <Link className="link-style" to={"/Home/Subscription"}>
+          <Link className="link-style" to="/subscription">
             plan
           </Link>
         </div>
@@ -146,10 +147,11 @@ const Container = styled.div`
     }
   }
   .sidebarOption__icon {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     margin-left: 0px;
     padding-left: 0px;
+    margin-top: 3px;
   }
   .sidebarOption {
     display: flex;
@@ -192,5 +194,30 @@ const Container = styled.div`
     color: rgba(0, 0, 0, 0.88);
     font-weight: bold;
     cursor: pointer;
+  }
+
+  @media (max-width: 400px) {
+    .sidebarOption {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .options {
+        display: flex;
+        align-items: center;
+
+        .sidebarOption__icon {
+          height: 15px;
+          width: 15px;
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+
+      .options__playlist {
+        .link_playlist {
+          margin-left: 0px;
+        }
+      }
+    }
   }
 `;

@@ -57,12 +57,11 @@ const AlbumPage = () => {
           <div className="contain">
              
               {albumData?.artists.map((artist) => (
-                <Link key={artist._id} className='name'>
+                <Link to={"/artistdetails/" +artist._id} key={artist._id} className='name'>
                   <ArtistName artist={artist} />
                 </Link>
               ))}
             </div>
-          
          
       </div>
 
