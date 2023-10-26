@@ -32,6 +32,9 @@ Start the development server
  npm start
 ```
 
+## Host Link
+hemanthkrishna-apple-music-clone.netlify.app
+
 ## Technologies Used
 
 - React: A popular JavaScript library for building user interfaces.
