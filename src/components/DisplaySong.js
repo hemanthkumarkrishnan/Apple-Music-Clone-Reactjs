@@ -37,24 +37,27 @@ function DisplaySong({ song }) {
   };
 
   const handelFavourite = () => {
-    const songId = song._id;
-    const temp = favorite.filter((fav) => fav._id !== songId);
- 
-    if (temp.length === favorite.length) {
+    const songId = song._id
+     const checking = favorite?.some((fav) => fav._id === songId);
+
+    if (checking) {
+      const removing = favorite.filter((fav) => fav._id !== songId);
+      
+      dispatch({
+        type: "SET_FAVORITE",
+        favorite:removing,
+      });
+    setStar(!star);
+    localStorage.setItem("favour",JSON.stringify(removing));
+    } else {
       dispatch({
         type: "SET_FAVORITE",
         favorite: [...favorite,song],
       });
-      setStar(false);
-      localStorage.setItem("favour",JSON.stringify(favorite));
-    } else {
-      dispatch({
-        type: "SET_FAVORITE",
-        favorite: temp,
-      });
-      localStorage.setItem("favour",JSON.stringify(temp));
-      setStar(true);
+    setStar(!star);
+    localStorage.setItem("favour",JSON.stringify([...favorite,song]));
     }
+    
   };
 
   return (
