@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import { useDataLayerValue } from "../DataLayer";
 import styled from "styled-components";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -12,10 +12,8 @@ function DisplaySong({ song }) {
   const [star, setStar] = useState(true);
   const [{currentSong,favorite,isPlaying}, dispatch] = useDataLayerValue();
 
-  // console.log(`favroites${favorite}`);
-  // console.log(`favList${favList}`);
-  // console.log( song);
-  // console.log( favorite);
+  console.log(favorite);
+ 
 
 
   useEffect(() => {
@@ -41,18 +39,20 @@ function DisplaySong({ song }) {
   const handelFavourite = () => {
     const songId = song._id;
     const temp = favorite.filter((fav) => fav._id !== songId);
-    console.log(temp);
+ 
     if (temp.length === favorite.length) {
       dispatch({
         type: "SET_FAVORITE",
         favorite: [...favorite,song],
       });
       setStar(false);
+      localStorage.setItem("favour",JSON.stringify(favorite));
     } else {
       dispatch({
         type: "SET_FAVORITE",
         favorite: temp,
       });
+      localStorage.setItem("favour",JSON.stringify(temp));
       setStar(true);
     }
   };
