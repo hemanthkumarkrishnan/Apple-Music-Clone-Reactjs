@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import styled from "styled-components";
 import { useDataLayerValue } from "../DataLayer";
 import { useEffect } from "react";
@@ -17,7 +17,11 @@ function BodyHome() {
   const [toptrand, setTopTrand] = useState(null);
   const [ListOfAlbum, setListOfAlbum] = useState(null);
   const [artists, setArtists] = useState(null);
-  console.log(artists);
+ 
+  const favs=JSON.parse(localStorage.getItem("favour"));
+  console.log(favorite);
+  console.log(favs);
+  
   const getListOfMusic = async () => {
     const data = await fetch(
       `https://academics.newtonschool.co/api/v1/music/song?&limit=15`,
@@ -48,6 +52,12 @@ function BodyHome() {
   useEffect(() => {
     getListOfMusic();
     getListOfAlbum();
+
+    JSON.parse(localStorage.getItem("favour")) === null ? localStorage.setItem("favour",JSON.stringify([])): dispatch({
+      type: "SET_FAVORITE",
+      favorite: JSON.parse(localStorage.getItem("favour")),
+    })
+
   }, []);
 
   useEffect(() => {
@@ -62,11 +72,19 @@ function BodyHome() {
 
     setTopTrand(romanticSong);
 
-    setArtists((prevElements) =>
-      ListOfMusic?.filter(
-        (element) => element?.artist?.[0].name !== "Ashish Vidyarthi"
-      )
-    );
+    let unics =[];
+      const art=ListOfMusic?.filter(
+        (element) =>{
+          if(unics.includes(element?.artist?.[0].name)){
+           return;
+          }else{
+            unics.push(element?.artist?.[0].name)
+            return element;
+          }
+        }
+      );
+ 
+    setArtists(art);
 
     dispatch({
       type: "SET_SONGS",
@@ -105,7 +123,7 @@ function BodyHome() {
               >
                 {" "}
                 <DisplayAlbum album={album} />
-              </Link>
+              </Link> 
             ))}
         </div>
       </div>
