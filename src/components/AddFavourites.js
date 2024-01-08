@@ -1,22 +1,23 @@
-import React from 'react'
+ import React from 'react'
 import { useDataLayerValue } from '../DataLayer'
 import styled from 'styled-components';
 import DisplaySong from './DisplaySong';
 const AddFavourites = () =>{
-  const[{favorite}]=useDataLayerValue();
-  console.log(favorite)
+  // const[{favorite}]=useDataLayerValue();
+  const favor=JSON.parse(localStorage.getItem("favour"));
+  console.log(favor)
   return (
      <Container>
 
-   {favorite.length === 0 && <h1>No favourite yet...!</h1> }
+   {favor.length === 0 && <h1>No favourite yet...!</h1> }
 
-    {favorite.length !== 0 && <div >
+    {favor.length !== 0 && <div >
     <h1>Your Favourites</h1>
    
   <div className="contain ">
 
     {
-       favorite.map((song) => (
+       favor.map((song) => (
         <DisplaySong key={song._id} song={song} />
 
       ))
